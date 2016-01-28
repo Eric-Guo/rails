@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'faye-websocket',   '~> 0.10.0'
   s.add_dependency 'websocket-driver', '~> 0.6.1'
 
-  s.add_development_dependency 'em-hiredis', '~> 0.3.0'
   s.add_development_dependency 'mocha'
   s.add_development_dependency 'pg'
   s.add_development_dependency 'puma'

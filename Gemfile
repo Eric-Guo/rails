@@ -64,7 +64,6 @@ end
 group :cable do
   gem 'puma', require: false
 
-  gem 'em-hiredis', require: false
   gem 'redis', require: false
 end
 
