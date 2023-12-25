@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/rails/sdoc.git
-  revision: 242686d0a55cd1f7c1c8b9e96ec85518c5e169a1
+  revision: e9bb867eba81f48c402a129e688e810ec1fa387c
   branch: main
   specs:
     sdoc (3.0.0.alpha)
@@ -723,7 +723,7 @@ DEPENDENCIES
   resque-scheduler
   rexml
   rouge
-  rubocop (>= 1.25.1)
+  rubocop
   rubocop-md
   rubocop-minitest
   rubocop-packaging
@@ -760,4 +760,4 @@ DEPENDENCIES
   websocket-client-simple!
 
 BUNDLED WITH
-   2.5.16
+   2.5.22
