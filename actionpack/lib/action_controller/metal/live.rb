@@ -230,6 +230,8 @@ module ActionController
             raise ClientDisconnected, "client disconnected"
           end
         end
+
+        string.bytesize
       end
 
       # Same as `write` but automatically include a newline at the end of the string.

@@ -1,3 +1,18 @@
+*   Fix response steam buffers compatibility with `IO.copy_stream`.
+
+    `IO.copy_stream(src, response.stream)` raised `TypeError: no implicit
+    conversion of Array into Integer` because `Buffer#write` returned the
+    buffer array instead of an Integer (bytes written). Additionally, the
+    written data could be silently corrupted because `IO.copy_stream`
+    reuses its internal string buffer after `write` returns — storing a
+    reference without `dup` meant the buffered content was later mutated.
+
+    Both `ActionDispatch::Response::Buffer#write` and
+    `ActionController::Live::Buffer#write` are affected.
+
+    *Gabriel Quaresma*
+
+
 ## Rails 8.1.3 (March 24, 2026) ##
 
 *   No changes.
