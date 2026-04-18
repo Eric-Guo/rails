@@ -1,3 +1,13 @@
+*   Fix Rails hanging when generating video previews
+
+    When Rails runs in a background process group, ffmpeg's attempt to configure the terminal for
+    interactive input would send SIGTTOU to the Rails process, suspending it indefinitely.
+
+    Fixed by explicitly passing /dev/null to ffmpeg's stdin.
+
+    *Jonathan del Strother*
+
+
 ## Rails 8.0.5 (March 24, 2026) ##
 
 *   Fix `ActiveStorage::Blob` content type predicate methods to handle `nil`.
