@@ -291,6 +291,34 @@ class CurrentAttributesTest < ActiveSupport::TestCase
     assert current.singleton_class.method_defined?(:regular)
   end
 
+  test "clear_all does not raise when a resets callback instantiates another CurrentAttributes class" do
+    auxiliary = Class.new(ActiveSupport::CurrentAttributes) do
+      def self.name
+        "AuxiliaryCurrent"
+      end
+
+      attribute :uuid, default: -> { SecureRandom.uuid }
+    end
+
+    triggering = Class.new(ActiveSupport::CurrentAttributes) do
+      def self.name
+        "TriggeringCurrent"
+      end
+
+      attribute :id
+
+      resets do
+        auxiliary.uuid
+      end
+    end
+
+    triggering.id = 1
+
+    assert_nothing_raised do
+      ActiveSupport::CurrentAttributes.clear_all
+    end
+  end
+
   test "attribute delegators have precise signature" do
     current = Class.new(ActiveSupport::CurrentAttributes) do
       def self.name

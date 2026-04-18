@@ -154,7 +154,7 @@ module ActiveSupport
       delegate :set, :reset, to: :instance
 
       def reset_all # :nodoc:
-        current_instances.each_value(&:reset)
+        current_instances.values.each(&:reset)
       end
 
       def clear_all # :nodoc:
